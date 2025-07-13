@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Casino Elite - Premium Gaming Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            box-shadow: 0 0 30px rgba(79, 172, 254, 0.3);
+        }
+        .casino-title {
+            background: linear-gradient(45deg, #4facfe, #00f2fe, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(79, 172, 254, 0.5);
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+        @keyframes titleGlow {
+            0% { filter: drop-shadow(0 0 10px rgba(79, 172, 254, 0.7)); }
+            100% { filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.7)); }
+        }
+        .game-card {
+            transition: all 0.3s ease;
+            background: linear-gradient(145deg, #2d3748, #1a202c);
+            border: 2px solid rgba(79, 172, 254, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .game-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(79, 172, 254, 0.4);
+            border-color: rgba(79, 172, 254, 0.8);
+        }
+        .live-indicator {
+            animation: pulse 2s infinite;
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.8);
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+        .mine-cell {
+            transition: all 0.2s ease;
+            border: 1px solid rgba(79, 172, 254, 0.2);
+        }
+        .mine-cell:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(79, 172, 254, 0.6);
+            border-color: rgba(79, 172, 254, 0.8);
+        }
+        .premium-badge {
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            animation: shimmer 2s infinite;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+        }
+        @keyframes shimmer {
+            0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); }
+            50% { opacity: 0.8; transform: scale(1.05); box-shadow: 0 0 30px rgba(255, 215, 0, 1); }
+        }
+        @keyframes liveBannerGlow {
+            0% { 
+                box-shadow: 0 0 30px rgba(239, 68, 68, 0.8), 0 0 60px rgba(239, 68, 68, 0.4);
+                border: 2px solid rgba(239, 68, 68, 0.6);
+            }
+            100% { 
+                box-shadow: 0 0 50px rgba(239, 68, 68, 1), 0 0 100px rgba(239, 68, 68, 0.6);
+                border: 2px solid rgba(239, 68, 68, 1);
+            }
+        }
+        .section-card {
+            background: linear-gradient(145deg, #2d3748, #1a202c);
+            border: 2px solid rgba(79, 172, 254, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .glow-button {
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+            transition: all 0.3s ease;
+        }
+        .glow-button:hover {
+            box-shadow: 0 0 30px rgba(34, 197, 94, 0.8);
+            transform: translateY(-2px);
+        }
+        .game-display {
+            background: linear-gradient(145deg, #374151, #1f2937);
+            border: 2px solid rgba(79, 172, 254, 0.3);
+            box-shadow: inset 0 0 20px rgba(79, 172, 254, 0.1);
+        }
+        .profit-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(45deg, #10b981, #059669);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            z-index: 1000;
+            box-shadow: 0 0 50px rgba(16, 185, 129, 0.8);
+            animation: profitPulse 0.5s ease-in-out;
+            border: 3px solid #34d399;
+        }
+        .loss-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(45deg, #ef4444, #dc2626);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            z-index: 1000;
+            box-shadow: 0 0 50px rgba(239, 68, 68, 0.8);
+            animation: lossPulse 0.5s ease-in-out;
+            border: 3px solid #f87171;
+        }
+        @keyframes profitPulse {
+            0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        }
+        @keyframes lossPulse {
+            0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+
+
+    <!-- Header -->
+    <header class="gradient-bg shadow-lg">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <h1 class="text-3xl font-bold casino-title">🎰 1xBet CASINO ELITE</h1>
+                    <span class="bg-green-500 px-3 py-1 rounded-full text-sm live-indicator">LIVE</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="bg-black bg-opacity-30 px-4 py-2 rounded-lg">
+                        <span class="text-sm">Balance: </span>
+                        <span class="font-bold text-yellow-400" id="balance">₹0</span>
+                    </div>
+                    <div class="text-sm">
+                        <div>ID: <span id="userId">USER001</span></div>
+                        <div class="text-green-400">Online: <span id="activeUsers">1,247</span></div>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button onclick="showDepositModal()" class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded-lg text-sm font-bold">💰 Deposit</button>
+                        <button onclick="showWithdrawModal()" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg text-sm font-bold">💸 Withdraw</button>
+                        <button onclick="logout()" class="bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded-lg text-sm">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Registration/Login Modal -->
+    <div id="authModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-gray-800 p-8 rounded-xl max-w-md w-full mx-4">
+            <h2 class="text-2xl font-bold mb-6 text-center">Register / Login</h2>
+            <div class="space-y-4">
+                <input type="text" id="username" placeholder="Username or User ID (e.g., USER1234)" class="w-full p-3 bg-gray-700 rounded-lg">
+                <input type="tel" id="phone" placeholder="Phone Number" class="w-full p-3 bg-gray-700 rounded-lg">
+                <input type="password" id="password" placeholder="Password" class="w-full p-3 bg-gray-700 rounded-lg">
+                <button onclick="register()" class="w-full bg-blue-600 hover:bg-blue-700 py-3 rounded-lg font-bold">Register & Login</button>
+                <div class="text-xs text-gray-400 text-center">
+                    New users: Enter username to create account<br>
+                    Existing users: Enter your User ID to login with saved balance
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Deposit Modal -->
+    <div id="depositModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-gray-800 p-8 rounded-xl max-w-md w-full mx-4">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-green-400">💰 Instant Deposit</h2>
+                <button onclick="closeDepositModal()" class="text-gray-400 hover:text-white text-2xl">&times;</button>
+            </div>
+            <div class="space-y-4">
+                <div class="bg-gradient-to-r from-green-600 to-green-700 p-4 rounded-xl text-center">
+                    <div class="text-sm text-green-100">Official UPI ID</div>
+                    <div class="font-mono text-lg font-bold">rohanbiyade0@oksbi</div>
+                </div>
+                <input type="number" id="depositAmountModal" placeholder="Enter Amount (Min ₹100)" class="w-full p-4 bg-gray-700 rounded-xl">
+                <input type="text" id="utrNumberModal" placeholder="UTR Transaction Number" class="w-full p-4 bg-gray-700 rounded-xl">
+                <input type="file" id="screenshotModal" accept="image/*" class="w-full p-4 bg-gray-700 rounded-xl">
+                <button onclick="depositFromModal()" class="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 py-4 rounded-xl font-bold text-lg">
+                    🚀 DEPOSIT NOW
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Withdraw Modal -->
+    <div id="withdrawModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-gray-800 p-8 rounded-xl max-w-md w-full mx-4">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-red-400">💸 Fast Withdrawal</h2>
+                <button onclick="closeWithdrawModal()" class="text-gray-400 hover:text-white text-2xl">&times;</button>
+            </div>
+            <div class="space-y-4">
+                <input type="text" id="accountNumberModal" placeholder="Bank Account Number" class="w-full p-4 bg-gray-700 rounded-xl">
+                <input type="text" id="ifscCodeModal" placeholder="IFSC Code" class="w-full p-4 bg-gray-700 rounded-xl">
+                <input type="text" id="holderNameModal" placeholder="Account Holder Name" class="w-full p-4 bg-gray-700 rounded-xl">
+                <input type="tel" id="withdrawPhoneModal" placeholder="Mobile Number" class="w-full p-4 bg-gray-700 rounded-xl">
+                <input type="number" id="withdrawAmountModal" placeholder="Withdrawal Amount" class="w-full p-4 bg-gray-700 rounded-xl">
+                <button onclick="withdrawFromModal()" class="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 py-4 rounded-xl font-bold text-lg">
+                    💳 WITHDRAW NOW
+                </button>
+                <div class="text-xs text-gray-400 text-center">Processing time: 5-30 minutes</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="mainContent" class="hidden">
+        <!-- Stats Dashboard -->
+        <div class="container mx-auto px-4 py-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+                <div class="bg-gray-800 p-4 rounded-lg text-center">
+                    <div class="text-2xl font-bold text-green-400" id="totalProfit">₹0</div>
+                    <div class="text-sm text-gray-400">Total Profit</div>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-lg text-center">
+                    <div class="text-2xl font-bold text-red-400" id="totalLoss">₹0</div>
+                    <div class="text-sm text-gray-400">Total Loss</div>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-lg text-center">
+                    <div class="text-2xl font-bold text-blue-400" id="totalBets">0</div>
+                    <div class="text-sm text-gray-400">Total Bets</div>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-lg text-center">
+                    <div class="text-2xl font-bold text-yellow-400" id="activePlayers">1,247</div>
+                    <div class="text-sm text-gray-400">Active Players</div>
+                </div>
+            </div>
+
+
+
+            <!-- Games Section -->
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold text-center mb-8 casino-title">🎮 PREMIUM GAMES</h2>
+                
+                <!-- Live Games Banner -->
+                <div class="bg-gradient-to-r from-red-600 via-red-500 to-red-600 p-4 rounded-xl mb-8 text-center" style="box-shadow: 0 0 30px rgba(239, 68, 68, 0.8), 0 0 60px rgba(239, 68, 68, 0.4); animation: liveBannerGlow 2s ease-in-out infinite alternate;">
+                    <div class="flex items-center justify-center space-x-4">
+                        <div class="live-indicator bg-white text-red-600 px-4 py-2 rounded-full font-bold" style="box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);">🔴 LIVE</div>
+                        <div class="text-white font-bold text-lg" style="text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);">All Games Are Live • Real Players • Real Money</div>
+                        <div class="live-indicator bg-white text-red-600 px-4 py-2 rounded-full font-bold" style="box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);">🔴 LIVE</div>
+                    </div>
+                    <div class="text-red-100 text-sm mt-2" style="text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);">Join 1,247+ players online now!</div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Mines Game -->
+                <div class="game-card p-8 rounded-2xl">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold text-blue-400">💣 MINES</h3>
+                        <div class="flex space-x-2">
+                            <span class="premium-badge text-black px-3 py-1 rounded-full text-xs font-bold">PREMIUM</span>
+                            <span class="live-indicator bg-red-500 px-3 py-1 rounded-full text-xs font-bold">🔴 LIVE</span>
+                        </div>
+                    </div>
+                    <div class="game-display p-4 rounded-xl mb-6">
+                        <div class="grid grid-cols-5 gap-2" id="minesGrid">
+                            <!-- 5x5 grid will be generated by JS -->
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-2 gap-3">
+                            <input type="number" id="minesBet" placeholder="Bet Amount" class="p-3 bg-gray-700 rounded-xl border-2 border-gray-600 focus:border-blue-400 transition-colors">
+                            <select id="minesCount" class="p-3 bg-gray-700 rounded-xl border-2 border-gray-600 focus:border-blue-400 transition-colors">
+                                <option value="1">1 Mine</option>
+                                <option value="3">3 Mines</option>
+                                <option value="5">5 Mines</option>
+                                <option value="10">10 Mines</option>
+                                <option value="24">24 Mines</option>
+                            </select>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2">
+                            <button onclick="startMines()" class="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 py-3 rounded-xl font-bold glow-button text-sm">
+                                🎯 BET
+                            </button>
+                            <button onclick="cashOutMines()" class="bg-gradient-to-r from-yellow-600 to-yellow-700 hover:from-yellow-700 hover:to-yellow-800 py-3 rounded-xl font-bold glow-button text-sm">
+                                💰 CASH OUT
+                            </button>
+                            <button onclick="newBetMines()" class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 py-3 rounded-xl font-bold glow-button text-sm">
+                                🔄 NEW BET
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aviator -->
+                <div class="game-card p-8 rounded-2xl">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold text-green-400">✈️ AVIATOR</h3>
+                        <div class="flex space-x-2">
+                            <span class="premium-badge text-black px-3 py-1 rounded-full text-xs font-bold">PREMIUM</span>
+                            <span class="live-indicator bg-red-500 px-3 py-1 rounded-full text-xs font-bold">🔴 LIVE</span>
+                        </div>
+                    </div>
+                    <div class="game-display p-6 rounded-xl mb-6 text-center">
+                        <div class="text-6xl mb-4">✈️</div>
+                        <div class="text-4xl font-bold text-green-400 mb-2" id="aviatorMultiplier">1.00x</div>
+                        <div class="text-sm text-gray-400">Current Multiplier</div>
+                    </div>
+                    <div class="space-y-4">
+                        <input type="number" id="aviatorBet" placeholder="Enter Bet Amount" class="w-full p-3 bg-gray-700 rounded-xl border-2 border-gray-600 focus:border-green-400 transition-colors">
+                        <div class="grid grid-cols-2 gap-3">
+                            <button onclick="startAviator()" class="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 py-3 rounded-xl font-bold glow-button">
+                                🚀 BET
+                            </button>
+                            <button onclick="cashOutAviator()" class="bg-gradient-to-r from-yellow-600 to-yellow-700 hover:from-yellow-700 hover:to-yellow-800 py-3 rounded-xl font-bold glow-button">
+                                💰 CASH OUT
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Crash -->
+                <div class="game-card p-8 rounded-2xl">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold text-red-400">📈 CRASH</h3>
+                        <div class="flex space-x-2">
+                            <span class="premium-badge text-black px-3 py-1 rounded-full text-xs font-bold">PREMIUM</span>
+                            <span class="live-indicator bg-red-500 px-3 py-1 rounded-full text-xs font-bold">🔴 LIVE</span>
+                        </div>
+                    </div>
+                    <div class="game-display p-6 rounded-xl mb-6 text-center">
+                        <div class="text-6xl mb-4">📈</div>
+                        <div class="text-4xl font-bold text-red-400 mb-2" id="crashMultiplier">1.00x</div>
+                        <div class="text-sm text-gray-400">Crash Point</div>
+                    </div>
+                    <div class="space-y-4">
+                        <input type="number" id="crashBet" placeholder="Enter Bet Amount" class="w-full p-3 bg-gray-700 rounded-xl border-2 border-gray-600 focus:border-red-400 transition-colors">
+                        <div class="grid grid-cols-2 gap-3">
+                            <button onclick="startCrash()" class="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 py-3 rounded-xl font-bold glow-button">
+                                🎯 BET
+                            </button>
+                            <button onclick="cashOutCrash()" class="bg-gradient-to-r from-yellow-600 to-yellow-700 hover:from-yellow-700 hover:to-yellow-800 py-3 rounded-xl font-bold glow-button">
+                                💰 CASH OUT
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Limbo -->
+                <div class="game-card p-8 rounded-2xl">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold text-purple-400">🎯 LIMBO</h3>
+                        <div class="flex space-x-2">
+                            <span class="premium-badge text-black px-3 py-1 rounded-full text-xs font-bold">PREMIUM</span>
+                            <span class="live-indicator bg-red-500 px-3 py-1 rounded-full text-xs font-bold">🔴 LIVE</span>
+                        </div>
+                    </div>
+                    <div class="game-display p-6 rounded-xl mb-6 text-center">
+                        <div class="text-6xl mb-4">🎯</div>
+                        <div class="text-4xl font-bold text-purple-400 mb-2" id="limboResult">0.00</div>
+                        <div class="text-sm text-gray-400">Result</div>
+                    </div>
+                    <div class="space-y-4">
+                        <input type="number" id="limboBet" placeholder="Bet Amount" class="w-full p-3 bg-gray-700 rounded-xl border-2 border-gray-600 focus:border-purple-400 transition-colors">
+                        <input type="number" id="limboTarget" placeholder="Target (2.00x)" step="0.01" class="w-full p-3 bg-gray-700 rounded-xl border-2 border-gray-600 focus:border-purple-400 transition-colors">
+                        <button onclick="playLimbo()" class="w-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 py-3 rounded-xl font-bold glow-button">
+                            🚀 PLAY
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Slide -->
+                <div class="game-card p-8 rounded-2xl">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold text-blue-400">🎢 SLIDE</h3>
+                        <div class="flex space-x-2">
+                            <span class="premium-badge text-black px-3 py-1 rounded-full text-xs font-bold">PREMIUM</span>
+                            <span class="live-indicator bg-red-500 px-3 py-1 rounded-full text-xs font-bold">🔴 LIVE</span>
+                        </div>
+                    </div>
+                    <div class="game-display p-6 rounded-xl mb-6 text-center">
+                        <div class="text-6xl mb-4">🎢</div>
+                        <div class="text-4xl font-bold text-blue-400 mb-2" id="slideResult">0</div>
+                        <div class="text-sm text-gray-400">Slide Position</div>
+                    </div>
+                    <div class="space-y-4">
+                        <input type="number" id="slideBet" placeholder="Enter Bet Amount" class="w-full p-3 bg-gray-700 rounded-xl border-2 border-gray-600 focus:border-blue-400 transition-colors">
+                        <button onclick="playSlide()" class="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 py-3 rounded-xl font-bold glow-button">
+                            🎢 SLIDE
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Plinko -->
+                <div class="game-card p-8 rounded-2xl">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold text-orange-400">🏀 PLINKO</h3>
+                        <div class="flex space-x-2">
+                            <span class="premium-badge text-black px-3 py-1 rounded-full text-xs font-bold">PREMIUM</span>
+                            <span class="live-indicator bg-red-500 px-3 py-1 rounded-full text-xs font-bold">🔴 LIVE</span>
+                        </div>
+                    </div>
+                    <div class="game-display p-6 rounded-xl mb-6 text-center">
+                        <div class="text-6xl mb-4">🏀</div>
+                        <div class="text-4xl font-bold text-orange-400 mb-2" id="plinkoMultiplier">0.00x</div>
+                        <div class="text-sm text-gray-400">Multiplier</div>
+                    </div>
+                    <div class="space-y-4">
+                        <input type="number" id="plinkoBet" placeholder="Enter Bet Amount" class="w-full p-3 bg-gray-700 rounded-xl border-2 border-gray-600 focus:border-orange-400 transition-colors">
+                        <button onclick="playPlinko()" class="w-full bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 py-3 rounded-xl font-bold glow-button">
+                            🏀 DROP BALL
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Dice -->
+                <div class="game-card p-8 rounded-2xl">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold text-green-400">🎲 DICE</h3>
+                        <div class="flex space-x-2">
+                            <span class="premium-badge text-black px-3 py-1 rounded-full text-xs font-bold">PREMIUM</span>
+                            <span class="live-indicator bg-red-500 px-3 py-1 rounded-full text-xs font-bold">🔴 LIVE</span>
+                        </div>
+                    </div>
+                    <div class="game-display p-6 rounded-xl mb-6 text-center">
+                        <div class="text-6xl mb-4" id="diceResult">🎲</div>
+                        <div class="text-sm text-gray-400">Roll Result</div>
+                    </div>
+                    <div class="space-y-4">
+                        <input type="number" id="diceBet" placeholder="Enter Bet Amount" class="w-full p-3 bg-gray-700 rounded-xl border-2 border-gray-600 focus:border-green-400 transition-colors">
+                        <select id="diceChoice" class="w-full p-3 bg-gray-700 rounded-xl border-2 border-gray-600 focus:border-green-400 transition-colors">
+                            <option value="over">Over 50</option>
+                            <option value="under">Under 50</option>
+                        </select>
+                        <button onclick="playDice()" class="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 py-3 rounded-xl font-bold glow-button">
+                            🎲 ROLL DICE
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tower -->
+                <div class="game-card p-8 rounded-2xl">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold text-indigo-400">🗼 TOWER</h3>
+                        <div class="flex space-x-2">
+                            <span class="premium-badge text-black px-3 py-1 rounded-full text-xs font-bold">PREMIUM</span>
+                            <span class="live-indicator bg-red-500 px-3 py-1 rounded-full text-xs font-bold">🔴 LIVE</span>
+                        </div>
+                    </div>
+                    <div class="game-display p-6 rounded-xl mb-6 text-center">
+                        <div class="text-6xl mb-4">🗼</div>
+                        <div class="text-4xl font-bold text-indigo-400 mb-2" id="towerLevel">Level 0</div>
+                        <div class="text-sm text-gray-400">Current Level</div>
+                    </div>
+                    <div class="space-y-4">
+                        <input type="number" id="towerBet" placeholder="Enter Bet Amount" class="w-full p-3 bg-gray-700 rounded-xl border-2 border-gray-600 focus:border-indigo-400 transition-colors">
+                        <div class="grid grid-cols-2 gap-3">
+                            <button onclick="startTower()" class="bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 py-3 rounded-xl font-bold glow-button">
+                                🚀 START
+                            </button>
+                            <button onclick="cashOutTower()" class="bg-gradient-to-r from-yellow-600 to-yellow-700 hover:from-yellow-700 hover:to-yellow-800 py-3 rounded-xl font-bold glow-button">
+                                💰 CASH OUT
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wheel of Fortune -->
+                <div class="game-card p-8 rounded-2xl">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold text-pink-400">🎡 WHEEL OF FORTUNE</h3>
+                        <div class="flex space-x-2">
+                            <span class="premium-badge text-black px-3 py-1 rounded-full text-xs font-bold">PREMIUM</span>
+                            <span class="live-indicator bg-red-500 px-3 py-1 rounded-full text-xs font-bold">🔴 LIVE</span>
+                        </div>
+                    </div>
+                    <div class="game-display p-6 rounded-xl mb-6 text-center">
+                        <div class="text-6xl mb-4">🎡</div>
+                        <div class="text-2xl font-bold text-pink-400" id="wheelResult">Spin to Win!</div>
+                    </div>
+                    <div class="space-y-4">
+                        <input type="number" id="wheelBet" placeholder="Enter Bet Amount" class="w-full p-3 bg-gray-700 rounded-xl border-2 border-gray-600 focus:border-pink-400 transition-colors">
+                        <button onclick="spinWheel()" class="w-full bg-gradient-to-r from-pink-600 to-pink-700 hover:from-pink-700 hover:to-pink-800 py-3 rounded-xl font-bold glow-button">
+                            🎡 SPIN WHEEL
+                        </button>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let gameState = {
+            balance: 0,
+            totalProfit: 0,
+            totalLoss: 0,
+            totalBets: 0,
+            userId: '',
+            isLoggedIn: false,
+            minesActive: false,
+            aviatorActive: false,
+            crashActive: false,
+            towerActive: false,
+            towerLevel: 0
+        };
+
+        // Initialize mines grid
+        function initMinesGrid() {
+            const grid = document.getElementById('minesGrid');
+            grid.innerHTML = '';
+            for (let i = 0; i < 25; i++) {
+                const cell = document.createElement('div');
+                cell.className = 'mine-cell bg-gray-600 hover:bg-gray-500 w-10 h-10 rounded-lg cursor-pointer flex items-center justify-center text-lg font-bold';
+                cell.onclick = () => clickMine(i);
+                grid.appendChild(cell);
+            }
+        }
+
+        // Registration/Login with persistent storage
+        function register() {
+            const username = document.getElementById('username').value;
+            const phone = document.getElementById('phone').value;
+            const password = document.getElementById('password').value;
+
+            if (username && phone && password) {
+                // Check if username starts with "USER" (existing User ID)
+                if (username.startsWith('USER')) {
+                    // Login with existing User ID
+                    const existingUser = localStorage.getItem('user_' + username);
+                    
+                    if (existingUser) {
+                        const userData = JSON.parse(existingUser);
+                        gameState.userId = userData.userId;
+                        gameState.balance = userData.balance || 0;
+                        gameState.totalProfit = userData.totalProfit || 0;
+                        gameState.totalLoss = userData.totalLoss || 0;
+                        gameState.totalBets = userData.totalBets || 0;
+                        gameState.isLoggedIn = true;
+                        
+                        alert('Welcome back ' + gameState.userId + '!\nYour saved balance: ₹' + gameState.balance.toFixed(2));
+                    } else {
+                        alert('User ID not found! Please check your User ID or create a new account.');
+                        return;
+                    }
+                } else {
+                    // Check if username already exists (for new registration)
+                    const existingUser = localStorage.getItem('user_name_' + username);
+                    
+                    if (existingUser) {
+                        // Login with existing username
+                        const userData = JSON.parse(existingUser);
+                        gameState.userId = userData.userId;
+                        gameState.balance = userData.balance || 0;
+                        gameState.totalProfit = userData.totalProfit || 0;
+                        gameState.totalLoss = userData.totalLoss || 0;
+                        gameState.totalBets = userData.totalBets || 0;
+                        gameState.isLoggedIn = true;
+                        
+                        alert('Welcome back ' + username + '!\nYour User ID: ' + gameState.userId + '\nYour balance: ₹' + gameState.balance.toFixed(2));
+                    } else {
+                        // Create new account
+                        gameState.userId = 'USER' + Math.floor(Math.random() * 10000);
+                        gameState.balance = 0;
+                        gameState.totalProfit = 0;
+                        gameState.totalLoss = 0;
+                        gameState.totalBets = 0;
+                        gameState.isLoggedIn = true;
+                        
+                        // Save new user to localStorage
+                        const userData = {
+                            userId: gameState.userId,
+                            username: username,
+                            phone: phone,
+                            balance: gameState.balance,
+                            totalProfit: gameState.totalProfit,
+                            totalLoss: gameState.totalLoss,
+                            totalBets: gameState.totalBets
+                        };
+                        localStorage.setItem('user_' + gameState.userId, JSON.stringify(userData));
+                        localStorage.setItem('user_name_' + username, JSON.stringify(userData));
+                        
+                        alert('🎉 Account created successfully!\n\nYour User ID: ' + gameState.userId + '\n\n⚠️ IMPORTANT: Save this User ID!\nUse this ID to login and access your balance anytime!');
+                    }
+                }
+                
+                document.getElementById('userId').textContent = gameState.userId;
+                document.getElementById('authModal').classList.add('hidden');
+                document.getElementById('mainContent').classList.remove('hidden');
+                updateStats();
+                initMinesGrid();
+                updateActiveUsers();
+                
+                // Clear form
+                document.getElementById('username').value = '';
+                document.getElementById('phone').value = '';
+                document.getElementById('password').value = '';
+            } else {
+                alert('Please fill all fields');
+            }
+        }
+
+        function logout() {
+            // Save current state before logout
+            if (gameState.isLoggedIn && gameState.userId) {
+                saveUserData();
+            }
+            
+            gameState.isLoggedIn = false;
+            document.getElementById('authModal').classList.remove('hidden');
+            document.getElementById('mainContent').classList.add('hidden');
+            alert('Logged out successfully! Use your User ID to login again.');
+        }
+
+        // Save user data to localStorage
+        function saveUserData() {
+            if (gameState.userId) {
+                const userData = {
+                    userId: gameState.userId,
+                    balance: gameState.balance,
+                    totalProfit: gameState.totalProfit,
+                    totalLoss: gameState.totalLoss,
+                    totalBets: gameState.totalBets
+                };
+                localStorage.setItem('user_' + gameState.userId, JSON.stringify(userData));
+            }
+        }
+
+        // Auto-login if user data exists
+        function checkAutoLogin() {
+            const savedUserId = localStorage.getItem('currentUserId');
+            if (savedUserId) {
+                const userData = localStorage.getItem('user_' + savedUserId);
+                if (userData) {
+                    const user = JSON.parse(userData);
+                    gameState.userId = user.userId;
+                    gameState.balance = user.balance || 0;
+                    gameState.totalProfit = user.totalProfit || 0;
+                    gameState.totalLoss = user.totalLoss || 0;
+                    gameState.totalBets = user.totalBets || 0;
+                    gameState.isLoggedIn = true;
+                    
+                    document.getElementById('userId').textContent = gameState.userId;
+                    document.getElementById('authModal').classList.add('hidden');
+                    document.getElementById('mainContent').classList.remove('hidden');
+                    updateStats();
+                }
+            }
+        }
+
+        // Modal functions
+        function showDepositModal() {
+            document.getElementById('depositModal').classList.remove('hidden');
+        }
+
+        function closeDepositModal() {
+            document.getElementById('depositModal').classList.add('hidden');
+        }
+
+        function showWithdrawModal() {
+            document.getElementById('withdrawModal').classList.remove('hidden');
+        }
+
+        function closeWithdrawModal() {
+            document.getElementById('withdrawModal').classList.add('hidden');
+        }
+
+        // Deposit function from modal
+        function depositFromModal() {
+            const amount = parseFloat(document.getElementById('depositAmountModal').value);
+            const utr = document.getElementById('utrNumberModal').value;
+            const screenshot = document.getElementById('screenshotModal').files[0];
+
+            if (amount && utr && screenshot) {
+                gameState.balance += amount;
+                document.getElementById('balance').textContent = '₹' + gameState.balance;
+                alert('Deposit successful! Balance updated instantly.');
+                // Clear form
+                document.getElementById('depositAmountModal').value = '';
+                document.getElementById('utrNumberModal').value = '';
+                document.getElementById('screenshotModal').value = '';
+                closeDepositModal();
+            } else {
+                alert('Please fill all fields and upload screenshot');
+            }
+        }
+
+        // Withdrawal function from modal
+        function withdrawFromModal() {
+            const amount = parseFloat(document.getElementById('withdrawAmountModal').value);
+            const account = document.getElementById('accountNumberModal').value;
+            const ifsc = document.getElementById('ifscCodeModal').value;
+            const holder = document.getElementById('holderNameModal').value;
+            const phone = document.getElementById('withdrawPhoneModal').value;
+
+            if (amount && account && ifsc && holder && phone) {
+                if (amount <= gameState.balance) {
+                    gameState.balance -= amount;
+                    document.getElementById('balance').textContent = '₹' + gameState.balance;
+                    alert('Withdrawal request submitted! Processing within 24 hours.');
+                    // Clear form
+                    document.getElementById('withdrawAmountModal').value = '';
+                    document.getElementById('accountNumberModal').value = '';
+                    document.getElementById('ifscCodeModal').value = '';
+                    document.getElementById('holderNameModal').value = '';
+                    document.getElementById('withdrawPhoneModal').value = '';
+                    closeWithdrawModal();
+                } else {
+                    alert('Insufficient balance');
+                }
+            } else {
+                alert('Please fill all fields');
+            }
+        }
+
+        // Mines game
+        function startMines() {
+            const bet = parseFloat(document.getElementById('minesBet').value);
+            if (bet && bet <= gameState.balance) {
+                gameState.balance -= bet;
+                gameState.minesActive = true;
+                gameState.totalBets++;
+                updateStats();
+                alert('Mines game started! Click on cells to reveal.');
+            } else {
+                alert('Invalid bet amount or insufficient balance');
+            }
+        }
+
+        function clickMine(index) {
+            if (!gameState.minesActive) return;
+            
+            const cells = document.querySelectorAll('.mine-cell');
+            const clickedCell = cells[index];
+            
+            // Prevent clicking same cell twice
+            if (clickedCell.innerHTML !== '') return;
+            
+            const isMine = Math.random() < 0.2; // 20% chance of mine
+            
+            if (isMine) {
+                // Show mine and disable all cells
+                clickedCell.innerHTML = '💣';
+                clickedCell.className = clickedCell.className.replace('bg-gray-600 hover:bg-gray-500', 'bg-red-600');
+                clickedCell.style.pointerEvents = 'none';
+                
+                // Disable all other cells and show them as closed
+                cells.forEach((cell, i) => {
+                    if (i !== index) {
+                        cell.style.pointerEvents = 'none';
+                        cell.className = cell.className.replace('hover:bg-gray-500', '');
+                        cell.style.opacity = '0.5';
+                    }
+                });
+                
+                gameState.minesActive = false;
+                const bet = parseFloat(document.getElementById('minesBet').value);
+                gameState.totalLoss += bet;
+                showLossMessage(bet);
+                setTimeout(() => {
+                    alert('💣 BOOM! Mine exploded! You lost ₹' + bet + '\n\nClick "New Bet" to play again!');
+                }, 500);
+            } else {
+                // Show gem
+                clickedCell.innerHTML = '💎';
+                clickedCell.className = clickedCell.className.replace('bg-gray-600 hover:bg-gray-500', 'bg-green-600');
+                clickedCell.style.pointerEvents = 'none';
+            }
+            updateStats();
+        }
+
+        function cashOutMines() {
+            if (gameState.minesActive) {
+                const bet = parseFloat(document.getElementById('minesBet').value);
+                const winAmount = bet * 1.5;
+                gameState.balance += winAmount;
+                gameState.totalProfit += (winAmount - bet);
+                gameState.minesActive = false;
+                showProfitMessage(winAmount - bet);
+                setTimeout(() => {
+                    alert('Cashed out! Won ₹' + winAmount);
+                }, 500);
+                updateStats();
+                initMinesGrid();
+            }
+        }
+
+        function newBetMines() {
+            gameState.minesActive = false;
+            initMinesGrid();
+            document.getElementById('minesBet').value = '';
+            alert('New game ready! Place your bet and start playing!');
+        }
+
+        // Aviator game
+        function startAviator() {
+            const bet = parseFloat(document.getElementById('aviatorBet').value);
+            if (bet && bet <= gameState.balance) {
+                gameState.balance -= bet;
+                gameState.aviatorActive = true;
+                gameState.totalBets++;
+                
+                let multiplier = 1.00;
+                const interval = setInterval(() => {
+                    multiplier += 0.01;
+                    document.getElementById('aviatorMultiplier').textContent = multiplier.toFixed(2) + 'x';
+                    
+                    if (Math.random() < 0.02) { // 2% chance to crash each tick
+                        clearInterval(interval);
+                        gameState.aviatorActive = false;
+                        gameState.totalLoss += bet;
+                        showLossMessage(bet);
+                        setTimeout(() => {
+                            alert('✈️ Plane crashed at ' + multiplier.toFixed(2) + 'x!');
+                        }, 500);
+                        updateStats();
+                    }
+                }, 100);
+            }
+        }
+
+        function cashOutAviator() {
+            if (gameState.aviatorActive) {
+                const bet = parseFloat(document.getElementById('aviatorBet').value);
+                const multiplier = parseFloat(document.getElementById('aviatorMultiplier').textContent);
+                const winAmount = bet * multiplier;
+                gameState.balance += winAmount;
+                gameState.totalProfit += (winAmount - bet);
+                gameState.aviatorActive = false;
+                showProfitMessage(winAmount - bet);
+                setTimeout(() => {
+                    alert('Cashed out at ' + multiplier.toFixed(2) + 'x! Won ₹' + winAmount.toFixed(2));
+                }, 500);
+                updateStats();
+            }
+        }
+
+        // Other games (simplified implementations)
+        function startCrash() {
+            const bet = parseFloat(document.getElementById('crashBet').value);
+            if (bet && bet <= gameState.balance) {
+                gameState.balance -= bet;
+                gameState.totalBets++;
+                const crashPoint = (Math.random() * 10 + 1).toFixed(2);
+                document.getElementById('crashMultiplier').textContent = crashPoint + 'x';
+                
+                if (Math.random() > 0.5) {
+                    const winAmount = bet * parseFloat(crashPoint);
+                    gameState.balance += winAmount;
+                    gameState.totalProfit += (winAmount - bet);
+                    showProfitMessage(winAmount - bet);
+                    setTimeout(() => {
+                        alert('Won ₹' + winAmount.toFixed(2) + ' at ' + crashPoint + 'x!');
+                    }, 500);
+                } else {
+                    gameState.totalLoss += bet;
+                    showLossMessage(bet);
+                    setTimeout(() => {
+                        alert('Lost ₹' + bet + ' - crashed before cashout!');
+                    }, 500);
+                }
+                updateStats();
+            }
+        }
+
+        function cashOutCrash() {
+            alert('Cash out feature - click Start Crash to play!');
+        }
+
+        function playLimbo() {
+            const bet = parseFloat(document.getElementById('limboBet').value);
+            const target = parseFloat(document.getElementById('limboTarget').value) || 2.00;
+            
+            if (bet && bet <= gameState.balance) {
+                gameState.balance -= bet;
+                gameState.totalBets++;
+                const result = (Math.random() * 100).toFixed(2);
+                document.getElementById('limboResult').textContent = result;
+                
+                if (parseFloat(result) >= target) {
+                    const winAmount = bet * target;
+                    gameState.balance += winAmount;
+                    gameState.totalProfit += (winAmount - bet);
+                    showProfitMessage(winAmount - bet);
+                    setTimeout(() => {
+                        alert('Won ₹' + winAmount.toFixed(2) + '!');
+                    }, 500);
+                } else {
+                    gameState.totalLoss += bet;
+                    showLossMessage(bet);
+                    setTimeout(() => {
+                        alert('Lost ₹' + bet + ' - target not reached!');
+                    }, 500);
+                }
+                updateStats();
+            }
+        }
+
+        function playSlide() {
+            const bet = parseFloat(document.getElementById('slideBet').value);
+            if (bet && bet <= gameState.balance) {
+                gameState.balance -= bet;
+                gameState.totalBets++;
+                const result = Math.floor(Math.random() * 100);
+                document.getElementById('slideResult').textContent = result;
+                
+                const multiplier = result > 50 ? 1.8 : 0;
+                if (multiplier > 0) {
+                    const winAmount = bet * multiplier;
+                    gameState.balance += winAmount;
+                    gameState.totalProfit += (winAmount - bet);
+                    showProfitMessage(winAmount - bet);
+                    setTimeout(() => {
+                        alert('Won ₹' + winAmount.toFixed(2) + '!');
+                    }, 500);
+                } else {
+                    gameState.totalLoss += bet;
+                    showLossMessage(bet);
+                    setTimeout(() => {
+                        alert('Lost ₹' + bet + '!');
+                    }, 500);
+                }
+                updateStats();
+            }
+        }
+
+        function playPlinko() {
+            const bet = parseFloat(document.getElementById('plinkoBet').value);
+            if (bet && bet <= gameState.balance) {
+                gameState.balance -= bet;
+                gameState.totalBets++;
+                const multipliers = [0.2, 0.5, 1.0, 1.5, 2.0, 5.0, 10.0];
+                const multiplier = multipliers[Math.floor(Math.random() * multipliers.length)];
+                document.getElementById('plinkoMultiplier').textContent = multiplier + 'x';
+                
+                const winAmount = bet * multiplier;
+                gameState.balance += winAmount;
+                if (winAmount > bet) {
+                    gameState.totalProfit += (winAmount - bet);
+                    showProfitMessage(winAmount - bet);
+                    setTimeout(() => {
+                        alert('Won ₹' + winAmount.toFixed(2) + ' with ' + multiplier + 'x!');
+                    }, 500);
+                } else {
+                    gameState.totalLoss += (bet - winAmount);
+                    showLossMessage(bet - winAmount);
+                    setTimeout(() => {
+                        alert('Won ₹' + winAmount.toFixed(2) + ' with ' + multiplier + 'x');
+                    }, 500);
+                }
+                updateStats();
+            }
+        }
+
+        function playDice() {
+            const bet = parseFloat(document.getElementById('diceBet').value);
+            const choice = document.getElementById('diceChoice').value;
+            
+            if (bet && bet <= gameState.balance) {
+                gameState.balance -= bet;
+                gameState.totalBets++;
+                const roll = Math.floor(Math.random() * 100) + 1;
+                document.getElementById('diceResult').textContent = roll;
+                
+                const won = (choice === 'over' && roll > 50) || (choice === 'under' && roll < 50);
+                if (won) {
+                    const winAmount = bet * 1.98;
+                    gameState.balance += winAmount;
+                    gameState.totalProfit += (winAmount - bet);
+                    showProfitMessage(winAmount - bet);
+                    setTimeout(() => {
+                        alert('Won ₹' + winAmount.toFixed(2) + '! Rolled ' + roll);
+                    }, 500);
+                } else {
+                    gameState.totalLoss += bet;
+                    showLossMessage(bet);
+                    setTimeout(() => {
+                        alert('Lost ₹' + bet + '! Rolled ' + roll);
+                    }, 500);
+                }
+                updateStats();
+            }
+        }
+
+        function startTower() {
+            const bet = parseFloat(document.getElementById('towerBet').value);
+            if (bet && bet <= gameState.balance) {
+                gameState.balance -= bet;
+                gameState.towerActive = true;
+                gameState.towerLevel = 1;
+                gameState.totalBets++;
+                document.getElementById('towerLevel').textContent = 'Level ' + gameState.towerLevel;
+                alert('Tower started! Keep climbing or cash out!');
+                updateStats();
+            }
+        }
+
+        function cashOutTower() {
+            if (gameState.towerActive) {
+                const bet = parseFloat(document.getElementById('towerBet').value);
+                const multiplier = 1 + (gameState.towerLevel * 0.5);
+                const winAmount = bet * multiplier;
+                gameState.balance += winAmount;
+                gameState.totalProfit += (winAmount - bet);
+                gameState.towerActive = false;
+                gameState.towerLevel = 0;
+                showProfitMessage(winAmount - bet);
+                setTimeout(() => {
+                    alert('Cashed out at Level ' + gameState.towerLevel + '! Won ₹' + winAmount.toFixed(2));
+                }, 500);
+                updateStats();
+            }
+        }
+
+        function spinWheel() {
+            const bet = parseFloat(document.getElementById('wheelBet').value);
+            if (bet && bet <= gameState.balance) {
+                gameState.balance -= bet;
+                gameState.totalBets++;
+                const prizes = ['💰 2x', '🎁 5x', '💎 10x', '🔥 0.5x', '⭐ 3x', '🎯 1x'];
+                const multipliers = [2, 5, 10, 0.5, 3, 1];
+                const index = Math.floor(Math.random() * prizes.length);
+                
+                document.getElementById('wheelResult').textContent = prizes[index];
+                
+                const winAmount = bet * multipliers[index];
+                gameState.balance += winAmount;
+                if (winAmount > bet) {
+                    gameState.totalProfit += (winAmount - bet);
+                    showProfitMessage(winAmount - bet);
+                    setTimeout(() => {
+                        alert('Won ₹' + winAmount.toFixed(2) + ' with ' + prizes[index] + '!');
+                    }, 500);
+                } else {
+                    gameState.totalLoss += (bet - winAmount);
+                    showLossMessage(bet - winAmount);
+                    setTimeout(() => {
+                        alert('Won ₹' + winAmount.toFixed(2) + ' with ' + prizes[index]);
+                    }, 500);
+                }
+                updateStats();
+            }
+        }
+
+        function updateStats() {
+            document.getElementById('balance').textContent = '₹' + gameState.balance.toFixed(2);
+            document.getElementById('totalProfit').textContent = '₹' + gameState.totalProfit.toFixed(2);
+            document.getElementById('totalLoss').textContent = '₹' + gameState.totalLoss.toFixed(2);
+            document.getElementById('totalBets').textContent = gameState.totalBets;
+            
+            // Auto-save user data whenever stats update
+            if (gameState.isLoggedIn) {
+                saveUserData();
+            }
+        }
+
+        function updateActiveUsers() {
+            const users = Math.floor(Math.random() * 100) + 1200;
+            document.getElementById('activeUsers').textContent = users;
+            document.getElementById('activePlayers').textContent = users;
+        }
+
+        // Show profit/loss messages on screen
+        function showProfitMessage(amount) {
+            const message = document.createElement('div');
+            message.className = 'profit-message';
+            message.innerHTML = `
+                <div style="text-align: center;">
+                    <div style="font-size: 48px; margin-bottom: 10px;">🎉</div>
+                    <div>PROFIT!</div>
+                    <div style="font-size: 32px; margin-top: 10px;">+₹${amount.toFixed(2)}</div>
+                </div>
+            `;
+            document.body.appendChild(message);
+            
+            setTimeout(() => {
+                document.body.removeChild(message);
+            }, 3000);
+        }
+
+        function showLossMessage(amount) {
+            const message = document.createElement('div');
+            message.className = 'loss-message';
+            message.innerHTML = `
+                <div style="text-align: center;">
+                    <div style="font-size: 48px; margin-bottom: 10px;">💥</div>
+                    <div>LOSS!</div>
+                    <div style="font-size: 32px; margin-top: 10px;">-₹${amount.toFixed(2)}</div>
+                </div>
+            `;
+            document.body.appendChild(message);
+            
+            setTimeout(() => {
+                document.body.removeChild(message);
+            }, 3000);
+        }
+
+        // Update active users every 5 seconds
+        setInterval(updateActiveUsers, 5000);
+
+        // Initialize
+        initMinesGrid();
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'95e756b506d5f313',t:'MTc1MjM5NDU5MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
